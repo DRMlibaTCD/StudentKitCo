@@ -51,8 +51,8 @@ export default function App() {
         profile={profile}
       />
     ),
-    opportunities: <OpportunitiesScreen />,
-    tools: <ToolsScreen />,
+    opportunities: <OpportunitiesScreen profile={profile} />,
+    tools: <ToolsScreen profile={profile} />,
     profile: (
       <ProfileScreen
         country={country}

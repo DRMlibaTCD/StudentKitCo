@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Sparkles, CheckCircle2, Lock } from 'lucide-react';
 import { Pill, Flag, Field } from '../components/shared';
-import { ALL_INTERESTS, suggestedInterestsFor, FOUNDER_SIGNATURE } from '../data/constants';
+import { ALL_INTERESTS, suggestedInterestsFor, FOUNDER_SIGNATURE, INSTITUTIONS } from '../data/constants';
 
 export default function Onboarding({ onFinish, country, setCountry, profile, setProfile }) {
   const [step, setStep] = useState(0);
@@ -13,8 +13,23 @@ export default function Onboarding({ onFinish, country, setCountry, profile, set
     { name: 'Lesotho', available: false },
     { name: 'Zambia', available: false },
   ];
-  const institutions = ['University of Eswatini', 'Limkokwing University (Eswatini)', 'Eswatini Medical Christian University', 'Other'];
+  const institutions = INSTITUTIONS.map((i) => i.name);
   const levels = ['First year', 'Second year', 'Third year', 'Final year', 'Postgraduate'];
+
+  // Auto-add matching interest tags whenever the programme text resolves to new suggestions,
+  // without wiping out anything the user already picked manually.
+  const lastSuggestedRef = useRef([]);
+  useEffect(() => {
+    const newSuggested = suggestedInterestsFor(profile.programme);
+    const toAdd = newSuggested.filter(
+      (t) => !lastSuggestedRef.current.includes(t) && !profile.interests.includes(t)
+    );
+    if (toAdd.length > 0) {
+      setProfile((p) => ({ ...p, interests: [...p.interests, ...toAdd] }));
+    }
+    lastSuggestedRef.current = newSuggested;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profile.programme]);
 
   const toggleInterest = (tag) => {
     setProfile((p) => ({

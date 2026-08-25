@@ -101,14 +101,32 @@ export function Row({ label, value }) {
   );
 }
 
-export function FeedbackRow({ icon: Icon, label, onClick }) {
-  return (
-    <div className="skc-divider flex items-center justify-between py-2" onClick={onClick} style={onClick ? { cursor: 'pointer' } : undefined}>
+export function FeedbackRow({ icon: Icon, label, onClick, href }) {
+  const content = (
+    <>
       <div className="flex items-center gap-2">
         <Icon size={14} className="skc-teal" />
         <span className="text-xs skc-navy skc-body">{label}</span>
       </div>
       <ChevronRight size={14} className="skc-muted" />
+    </>
+  );
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className="skc-divider flex items-center justify-between py-2"
+        style={{ textDecoration: 'none' }}
+      >
+        {content}
+      </a>
+    );
+  }
+  return (
+    <div className="skc-divider flex items-center justify-between py-2" onClick={onClick} style={onClick ? { cursor: 'pointer' } : undefined}>
+      {content}
     </div>
   );
 }

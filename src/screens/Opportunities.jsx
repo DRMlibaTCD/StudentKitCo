@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import { Pill, OpportunityCard } from '../components/shared';
 
-export default function OpportunitiesScreen() {
+export default function OpportunitiesScreen({ profile }) {
   const [filter, setFilter] = useState('All');
   const filters = ['All', 'Scholarships', 'Internships', 'Events'];
+
+  const programme = profile?.programme || 'your programme';
+  const topInterest = profile?.interests?.[0];
+  const interestPhrase = topInterest ? ` and ${topInterest} interest` : '';
 
   const opportunities = [
     {
@@ -14,7 +18,7 @@ export default function OpportunitiesScreen() {
       statusType: 'warn',
       deadline: 'Closes 30 Aug',
       match: 92,
-      why: 'Matches your Geomatics programme and GIS interest',
+      why: `Matches ${programme}${interestPhrase}`,
     },
     {
       category: 'Scholarship',
@@ -24,7 +28,7 @@ export default function OpportunitiesScreen() {
       statusType: 'success',
       deadline: 'Closes 15 Sept',
       match: 78,
-      why: 'Based on your country and study level',
+      why: `Based on your country${profile?.level ? ` and ${profile.level.toLowerCase()}` : ' and study level'}`,
     },
     {
       category: 'Event',
@@ -34,7 +38,7 @@ export default function OpportunitiesScreen() {
       statusType: 'lock',
       deadline: '12 Sept',
       match: 85,
-      why: 'Relevant to your programme, with networking opportunities',
+      why: `Relevant to ${programme}, with networking opportunities`,
     },
   ];
 
@@ -59,6 +63,10 @@ export default function OpportunitiesScreen() {
           No {filter.toLowerCase()} to show right now — check back soon.
         </p>
       )}
+
+      <p className="text-3xs skc-muted skc-body text-center pt-1">
+        Sample listings shown for illustration — a live, filtered feed is on the roadmap.
+      </p>
     </div>
   );
 }

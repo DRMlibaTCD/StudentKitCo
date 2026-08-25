@@ -4,7 +4,11 @@ import {
   CheckCircle2, Lock, Bug, Lightbulb, Star, MessageCircle,
 } from 'lucide-react';
 import { Flag, Row, FeedbackRow } from '../components/shared';
-import { FOUNDER_STORY_PARAGRAPHS, FOUNDER_SIGNATURE } from '../data/constants';
+import {
+  FOUNDER_STORY_PARAGRAPHS, FOUNDER_SIGNATURE, INSTITUTIONS,
+  CONTACT_FORM_URL, REPORT_PROBLEM_FORM_URL, SUGGEST_FEATURE_FORM_URL, RATE_FORM_URL,
+  WHATSAPP_CHANNEL_URL,
+} from '../data/constants';
 
 export default function ProfileScreen({ country, theme, setTheme, onReplayOnboarding, seenTeaser, profile }) {
   const [storyOpen, setStoryOpen] = useState(false);
@@ -66,22 +70,32 @@ export default function ProfileScreen({ country, theme, setTheme, onReplayOnboar
     </div>
   );
 
+  const currentInstitution = INSTITUTIONS.find((i) => i.name === profile.institution);
+  const handbookUrl = currentInstitution?.handbookUrl;
+  const handbookLabel = currentInstitution?.handbookLabel;
+
   const courseCard = (
     <div className="skc-card p-4" key="course">
       <p className="text-3xs skc-muted skc-body mb-1 uppercase tracking-wide font-medium">Course structure</p>
       <p className="text-2xs skc-muted skc-body mb-2">
         Looking for your full year-by-year course list? We link you straight to the official source rather than guessing.
       </p>
-      <a
-        href="https://www.uneswa.ac.sz"
-        target="_blank"
-        rel="noreferrer"
-        className="flex items-center justify-between"
-        style={{ textDecoration: 'none' }}
-      >
-        <span className="text-xs skc-navy skc-body font-medium">UNESWA Official Handbook</span>
-        <ExternalLink size={14} className="skc-muted" />
-      </a>
+      {handbookUrl ? (
+        <a
+          href={handbookUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center justify-between"
+          style={{ textDecoration: 'none' }}
+        >
+          <span className="text-xs skc-navy skc-body font-medium">{handbookLabel}</span>
+          <ExternalLink size={14} className="skc-muted" />
+        </a>
+      ) : (
+        <p className="text-2xs skc-muted skc-body italic">
+          We don't have an official link for "{profile.institution || 'this institution'}" yet — check with your faculty office for the current handbook.
+        </p>
+      )}
     </div>
   );
 
@@ -109,9 +123,9 @@ export default function ProfileScreen({ country, theme, setTheme, onReplayOnboar
   const feedbackCard = (
     <div className="skc-card p-4" key="feedback">
       <p className="text-3xs skc-muted skc-body mb-1 uppercase tracking-wide font-medium">Feedback</p>
-      <FeedbackRow icon={Bug} label="Report a problem" />
-      <FeedbackRow icon={Lightbulb} label="Suggest a feature" />
-      <FeedbackRow icon={Star} label="Rate this" />
+      <FeedbackRow icon={Bug} label="Report a problem" href={REPORT_PROBLEM_FORM_URL} />
+      <FeedbackRow icon={Lightbulb} label="Suggest a feature" href={SUGGEST_FEATURE_FORM_URL} />
+      <FeedbackRow icon={Star} label="Rate this" href={RATE_FORM_URL} />
     </div>
   );
 
@@ -134,7 +148,7 @@ export default function ProfileScreen({ country, theme, setTheme, onReplayOnboar
       <p className="text-xs italic skc-navy skc-body">"Built by a student, for students."</p>
       <p className="text-xs skc-teal skc-display font-semibold mb-2">{FOUNDER_SIGNATURE}</p>
 
-      <FeedbackRow icon={Mail} label="Contact the developer" />
+      <FeedbackRow icon={Mail} label="Contact the developer" href={CONTACT_FORM_URL} />
       <div className="skc-divider flex items-center justify-between py-2" onClick={handleShare} style={{ cursor: 'pointer' }}>
         <div className="flex items-center gap-2">
           <Share2 size={14} className="skc-teal" />
@@ -151,7 +165,7 @@ export default function ProfileScreen({ country, theme, setTheme, onReplayOnboar
       </div>
 
       <a
-        href="https://whatsapp.com/channel/"
+        href={WHATSAPP_CHANNEL_URL}
         target="_blank"
         rel="noreferrer"
         className="mt-3 skc-bg-tealtint rounded-xl p-3 flex items-center justify-between"

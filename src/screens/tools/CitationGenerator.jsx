@@ -2,21 +2,8 @@ import { useState } from 'react';
 import { Plus, Trash2, AlertTriangle } from 'lucide-react';
 import { Pill, Field } from '../../components/shared';
 import { lookupDoi, lookupIsbn } from '../../lib/citationLookup';
+import { buildCitation } from '../../lib/citationFormat';
 import { usePersistentState } from '../../hooks/usePersistentState';
-
-function buildCitation(style, d) {
-  const lastName = (d.author || '').split(',')[0] || d.author || 'Unknown';
-  const referenceMap = {
-    'APA 7': `${d.author} (${d.year}). ${d.title}. ${d.source}.`,
-    Harvard: `${d.author} ${d.year}, ${d.title}, ${d.source}.`,
-    IEEE: `${d.author}, "${d.title}," ${d.source}, ${d.year}.`,
-    MLA: `${d.author}. "${d.title}." ${d.source}, ${d.year}.`,
-    Chicago: `${d.author}. ${d.year}. ${d.title}. ${d.source}.`,
-  };
-  const inText =
-    style === 'IEEE' ? '[1]' : style === 'MLA' ? `(${lastName})` : `(${lastName}, ${d.year})`;
-  return { reference: referenceMap[style], inText };
-}
 
 export default function CitationGenerator() {
   const styles5 = ['APA 7', 'Harvard', 'IEEE', 'MLA', 'Chicago'];

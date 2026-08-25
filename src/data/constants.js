@@ -41,6 +41,26 @@ export const REPORT_STRUCTURES = {
 
 export const FOUNDER_SIGNATURE = '— Mlibatisi Dlamini (2026) ©';
 
+export const INSTITUTIONS = [
+  { name: 'University of Eswatini', handbookUrl: 'https://www.uneswa.ac.sz', handbookLabel: 'UNESWA Official Handbook' },
+  { name: 'Limkokwing University (Eswatini)', handbookUrl: 'https://www.limkokwing.net/eswatini/', handbookLabel: 'Limkokwing Eswatini — Official Site' },
+  { name: 'Eswatini Medical Christian University', handbookUrl: 'https://emcu.ac.sz', handbookLabel: 'EMCU Official Site' },
+  { name: 'Southern Africa Nazarene University (SANU)', handbookUrl: 'https://www.sanu.ac.sz', handbookLabel: 'SANU Official Site' },
+  { name: 'William Pitcher College', handbookUrl: 'https://www.wpc.ac.sz', handbookLabel: 'William Pitcher College — Official Site' },
+  { name: 'Eswatini College of Technology (ECOT)', handbookUrl: 'https://www.ecot.ac.sz', handbookLabel: 'ECOT Official Site' },
+  { name: 'Gwamile VOCTIM', handbookUrl: 'https://gwamilevoctim.ac.sz', handbookLabel: 'Gwamile VOCTIM — Official Site' },
+  { name: 'Ngwane Training College', handbookUrl: 'https://ngwanecollege.org', handbookLabel: 'Ngwane Training College — Official Site' },
+  { name: 'Other', handbookUrl: null, handbookLabel: null },
+];
+
+// TODO: replace these three with the real Google Form links once created.
+export const CONTACT_FORM_URL = 'https://forms.google.com/REPLACE_WITH_CONTACT_FORM';
+export const REPORT_PROBLEM_FORM_URL = 'https://forms.google.com/REPLACE_WITH_REPORT_PROBLEM_FORM';
+export const SUGGEST_FEATURE_FORM_URL = 'https://forms.google.com/REPLACE_WITH_SUGGEST_FEATURE_FORM';
+export const RATE_FORM_URL = 'https://forms.google.com/REPLACE_WITH_RATE_FORM';
+
+export const WHATSAPP_CHANNEL_URL = 'https://whatsapp.com/channel/0029Vb8XUWbADTOBMrhjqz11';
+
 export const FOUNDER_TEASER =
   "I built StudentKitCo. because too many good opportunities were reaching students too late, or not at all.";
 

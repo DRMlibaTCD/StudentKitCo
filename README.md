@@ -42,13 +42,23 @@ npm run preview   # optional, serves the dist/ build locally to sanity-check it
 3. **PWA install**
    Once live on your Vercel domain (e.g. `studentkitco.vercel.app`), the app is installable on Android/desktop Chrome via the install prompt, and on iOS Safari via Share → "Add to Home Screen." It will also work offline after the first visit, since the service worker precaches the app shell.
 
+## Before you consider this fully "live"
+
+A few things are wired up but need your real values swapped in — all in `src/data/constants.js`:
+
+- `WHATSAPP_CHANNEL_URL` — placeholder until you create the actual WhatsApp Channel and paste its invite link in.
+- `CONTACT_FORM_URL`, `REPORT_PROBLEM_FORM_URL`, `SUGGEST_FEATURE_FORM_URL`, `RATE_FORM_URL` — placeholders until you create the corresponding Google Forms.
+
+Each is marked `REPLACE_WITH_...` so they're easy to find — just search the file for `REPLACE_WITH` and swap in the real links, then redeploy (push to GitHub, Vercel auto-deploys).
+
 ## What's real vs. what's a placeholder
 
 - **Citation lookups (DOI via Crossref, ISBN via Open Library)** are live network calls — no mock data, no demo label. They need an internet connection to resolve; if a lookup fails, the tool shows an inline error message rather than silently falling back to fake data.
 - **Per-device storage** (profile, theme, country, teaser dismissal, citation reference list, onboarding completion) uses real `localStorage`, wrapped in a small `usePersistentState` hook (`src/hooks/usePersistentState.js`) with try/catch so the app still works if storage is unavailable (e.g. private browsing).
 - **Flags** for the 5 supported countries are bundled locally in `public/flags/` (sourced from the MIT-licensed `flag-icons` project) — no CDN fetch, so they render correctly offline.
-- **Opportunities list** is still static sample data (as in the mockup) — wiring it to a real backend/CMS is a natural next step once you're ready.
-- **Report Builder** still only gives a guided outline, not a downloadable formatted document — flagged in the UI as planned for a later version, same as before.
+- **Opportunities list** is still static sample data (as in the mockup) — the "why this matches you" text is now dynamic based on your actual profile, but the 3 listings themselves are illustrative placeholders, not a real live feed. Wiring it to a real backend/CMS is a natural next step once you're ready.
+- **Course structure links** are now institution-specific — each of the 9 supported institutions links to its own official site/handbook.
+- **Report Builder** now generates a real, downloadable `.docx` — cover page, table of contents, a heading per section with a placeholder line to fill in, and a references page that auto-pulls in whatever's saved in the Citation tool. Generated entirely client-side (the `docx` library is lazy-loaded only when you hit download, so it doesn't bloat the app's initial load).
 
 ## Project structure
 
