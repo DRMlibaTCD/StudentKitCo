@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Pill, OpportunityCard } from '../components/shared';
+import { OPPORTUNITY_SAMPLES, categoryForProgramme } from '../data/constants';
 
 export default function OpportunitiesScreen({ profile }) {
   const [filter, setFilter] = useState('All');
@@ -9,37 +10,13 @@ export default function OpportunitiesScreen({ profile }) {
   const topInterest = profile?.interests?.[0];
   const interestPhrase = topInterest ? ` and ${topInterest} interest` : '';
 
+  const category = categoryForProgramme(profile?.programme) || 'general';
+  const baseSet = OPPORTUNITY_SAMPLES[category];
+
   const opportunities = [
-    {
-      category: 'Internship',
-      title: 'GIS Intern — Eswatini Water Services Corporation',
-      trust: 'Official',
-      status: 'Closing Soon',
-      statusType: 'warn',
-      deadline: 'Closes 30 Aug',
-      match: 92,
-      why: `Matches ${programme}${interestPhrase}`,
-    },
-    {
-      category: 'Scholarship',
-      title: 'Eswatini National Scholarship — Undergraduate Renewal',
-      trust: 'Verified',
-      status: 'Open Now',
-      statusType: 'success',
-      deadline: 'Closes 15 Sept',
-      match: 78,
-      why: `Based on your country${profile?.level ? ` and ${profile.level.toLowerCase()}` : ' and study level'}`,
-    },
-    {
-      category: 'Event',
-      title: 'Smart Cities & Geospatial Tech Conference — Mbabane',
-      trust: 'Community Submitted',
-      status: 'Upcoming',
-      statusType: 'lock',
-      deadline: '12 Sept',
-      match: 85,
-      why: `Relevant to ${programme}, with networking opportunities`,
-    },
+    { ...baseSet[0], why: `Matches ${programme}${interestPhrase}` },
+    { ...baseSet[1], why: `Based on your country${profile?.level ? ` and ${profile.level.toLowerCase()}` : ' and study level'}` },
+    { ...baseSet[2], why: `Relevant to ${programme}, with networking opportunities` },
   ];
 
   const categoryMap = { Scholarships: 'Scholarship', Internships: 'Internship', Events: 'Event' };

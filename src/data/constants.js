@@ -7,15 +7,70 @@ export const FLAG_CODES = {
 };
 
 export const PROGRAMME_INTEREST_MAP = [
-  { keywords: ['geomatics', 'survey', 'gis', 'geospatial'], tags: ['GIS', 'Remote Sensing', 'Smart Cities', 'Environmental Management'] },
-  { keywords: ['computer', 'software', 'information technology', 'programming'], tags: ['Technology', 'AI', 'Software Development', 'Data Science'] },
-  { keywords: ['finance', 'accounting', 'economics', 'business'], tags: ['Finance', 'Entrepreneurship', 'Economics'] },
-  { keywords: ['medicine', 'health', 'nursing', 'pharmacy'], tags: ['Health', 'Research'] },
-  { keywords: ['engineering', 'civil', 'mechanical', 'electrical'], tags: ['Engineering', 'Technology', 'Infrastructure'] },
-  { keywords: ['agriculture', 'agric'], tags: ['Agriculture', 'Environmental Management'] },
-  { keywords: ['law'], tags: ['Law', 'Policy'] },
-  { keywords: ['education', 'teaching'], tags: ['Education', 'Youth Development'] },
+  { key: 'geomatics', keywords: ['geomatics', 'survey', 'gis', 'geospatial'], tags: ['GIS', 'Remote Sensing', 'Smart Cities', 'Environmental Management'] },
+  { key: 'tech', keywords: ['computer', 'software', 'information technology', 'programming'], tags: ['Technology', 'AI', 'Software Development', 'Data Science'] },
+  { key: 'finance', keywords: ['finance', 'accounting', 'economics', 'business'], tags: ['Finance', 'Entrepreneurship', 'Economics'] },
+  { key: 'health', keywords: ['medicine', 'health', 'nursing', 'pharmacy', 'medical', 'laboratory', 'lab science', 'radiography'], tags: ['Health', 'Research'] },
+  { key: 'engineering', keywords: ['engineering', 'civil', 'mechanical', 'electrical'], tags: ['Engineering', 'Technology', 'Infrastructure'] },
+  { key: 'agriculture', keywords: ['agriculture', 'agric'], tags: ['Agriculture', 'Environmental Management'] },
+  { key: 'law', keywords: ['law'], tags: ['Law', 'Policy'] },
+  { key: 'education', keywords: ['education', 'teaching'], tags: ['Education', 'Youth Development'] },
 ];
+
+/** Returns the first matching category key for a programme string, or null if nothing matches. */
+export function categoryForProgramme(programme) {
+  const p = (programme || '').toLowerCase();
+  const match = PROGRAMME_INTEREST_MAP.find((row) => row.keywords.some((k) => p.includes(k)));
+  return match ? match.key : null;
+}
+
+export const OPPORTUNITY_SAMPLES = {
+  geomatics: [
+    { category: 'Internship', title: 'GIS Intern — Eswatini Water Services Corporation', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 92 },
+    { category: 'Scholarship', title: 'Eswatini National Scholarship — Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 78 },
+    { category: 'Event', title: 'Smart Cities & Geospatial Tech Conference — Mbabane', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 85 },
+  ],
+  health: [
+    { category: 'Internship', title: 'Laboratory Intern — Eswatini Ministry of Health', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 90 },
+    { category: 'Scholarship', title: 'Eswatini National Scholarship — Health Sciences Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 80 },
+    { category: 'Event', title: 'Public Health & Diagnostics Symposium — Manzini', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 84 },
+  ],
+  tech: [
+    { category: 'Internship', title: 'Software Development Intern — Royal Science & Technology Park', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 91 },
+    { category: 'Scholarship', title: 'Eswatini National Scholarship — ICT Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 79 },
+    { category: 'Event', title: 'Eswatini Tech & Innovation Summit — Mbabane', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 86 },
+  ],
+  finance: [
+    { category: 'Internship', title: 'Finance Intern — Central Bank of Eswatini', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 89 },
+    { category: 'Scholarship', title: 'Eswatini National Scholarship — Business & Finance Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 77 },
+    { category: 'Event', title: 'Young Entrepreneurs & Finance Forum — Manzini', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 83 },
+  ],
+  engineering: [
+    { category: 'Internship', title: 'Engineering Intern — Eswatini Electricity Company', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 90 },
+    { category: 'Scholarship', title: 'Eswatini National Scholarship — Engineering Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 78 },
+    { category: 'Event', title: 'Infrastructure & Engineering Careers Expo — Mbabane', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 84 },
+  ],
+  agriculture: [
+    { category: 'Internship', title: 'Agricultural Extension Intern — Ministry of Agriculture', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 88 },
+    { category: 'Scholarship', title: 'Eswatini National Scholarship — Agriculture Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 76 },
+    { category: 'Event', title: 'Sustainable Agriculture & Food Security Forum — Luyengo', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 82 },
+  ],
+  law: [
+    { category: 'Internship', title: 'Legal Intern — Eswatini High Court', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 89 },
+    { category: 'Scholarship', title: 'Eswatini National Scholarship — Law Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 77 },
+    { category: 'Event', title: 'Law & Governance Careers Dialogue — Mbabane', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 81 },
+  ],
+  education: [
+    { category: 'Internship', title: 'Teaching Practicum Placement — Ministry of Education and Training', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 88 },
+    { category: 'Scholarship', title: 'Eswatini National Scholarship — Education Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 76 },
+    { category: 'Event', title: 'Future Educators Conference — Nhlangano', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 82 },
+  ],
+  general: [
+    { category: 'Internship', title: 'Graduate Internship Programme — Public Service Commission', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 85 },
+    { category: 'Scholarship', title: 'Eswatini National Scholarship — Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 75 },
+    { category: 'Event', title: 'National Student Careers Fair — Mbabane', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 80 },
+  ],
+};
 
 export const ALL_INTERESTS = [
   'GIS', 'Remote Sensing', 'Smart Cities', 'Environmental Management', 'Technology', 'AI',
