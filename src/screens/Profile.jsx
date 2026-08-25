@@ -5,7 +5,7 @@ import {
 } from 'lucide-react';
 import { Flag, Row, FeedbackRow } from '../components/shared';
 import {
-  FOUNDER_STORY_PARAGRAPHS, FOUNDER_SIGNATURE, INSTITUTIONS,
+  FOUNDER_STORY_PARAGRAPHS, FOUNDER_SIGNATURE, INSTITUTIONS, institutionsForCountry, FUNDING_BODIES,
   CONTACT_FORM_URL, REPORT_PROBLEM_FORM_URL, SUGGEST_FEATURE_FORM_URL, RATE_FORM_URL,
   WHATSAPP_CHANNEL_URL,
 } from '../data/constants';
@@ -49,6 +49,8 @@ export default function ProfileScreen({ country, theme, setTheme, onReplayOnboar
       <Row label="Name" value={profile.name || '—'} />
       <Row label="Preferred name" value={profile.nickname || 'Same as name'} />
       <Row label="Date of birth" value={profile.dob || 'Not set'} />
+      <Row label="Nationality" value={profile.nationality || 'Not set'} />
+      <Row label="Gender" value={profile.gender || 'Not set'} />
     </div>
   );
 
@@ -120,6 +122,25 @@ export default function ProfileScreen({ country, theme, setTheme, onReplayOnboar
     </div>
   );
 
+  const funding = FUNDING_BODIES[country];
+  const fundingCard = funding ? (
+    <div className="skc-card p-4" key="funding">
+      <p className="text-3xs skc-muted skc-body mb-1 uppercase tracking-wide font-medium">Tertiary Funding</p>
+      <p className="text-xs skc-navy skc-body font-medium mb-1">{funding.name}</p>
+      <p className="text-2xs skc-muted skc-body mb-2">{funding.description}</p>
+      <a
+        href={funding.url}
+        target="_blank"
+        rel="noreferrer"
+        className="flex items-center justify-between"
+        style={{ textDecoration: 'none' }}
+      >
+        <span className="text-xs skc-teal skc-body font-medium">Visit official site</span>
+        <ExternalLink size={14} className="skc-muted" />
+      </a>
+    </div>
+  ) : null;
+
   const feedbackCard = (
     <div className="skc-card p-4" key="feedback">
       <p className="text-3xs skc-muted skc-body mb-1 uppercase tracking-wide font-medium">Feedback</p>
@@ -181,8 +202,8 @@ export default function ProfileScreen({ country, theme, setTheme, onReplayOnboar
   );
 
   const orderedCards = seenTeaser
-    ? [aboutCard, personalCard, academicCard, courseCard, countryCard, feedbackCard]
-    : [personalCard, academicCard, courseCard, countryCard, feedbackCard, aboutCard];
+    ? [aboutCard, personalCard, academicCard, courseCard, countryCard, ...(fundingCard ? [fundingCard] : []), feedbackCard]
+    : [personalCard, academicCard, courseCard, countryCard, ...(fundingCard ? [fundingCard] : []), feedbackCard, aboutCard];
 
   return (
     <div className="p-4 space-y-3">

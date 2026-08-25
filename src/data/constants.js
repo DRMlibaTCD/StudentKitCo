@@ -25,51 +25,100 @@ export function categoryForProgramme(programme) {
 }
 
 export const OPPORTUNITY_SAMPLES = {
-  geomatics: [
-    { category: 'Internship', title: 'GIS Intern — Eswatini Water Services Corporation', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 92 },
-    { category: 'Scholarship', title: 'Eswatini National Scholarship — Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 78 },
-    { category: 'Event', title: 'Smart Cities & Geospatial Tech Conference — Mbabane', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 85 },
-  ],
-  health: [
-    { category: 'Internship', title: 'Laboratory Intern — Eswatini Ministry of Health', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 90 },
-    { category: 'Scholarship', title: 'Eswatini National Scholarship — Health Sciences Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 80 },
-    { category: 'Event', title: 'Public Health & Diagnostics Symposium — Manzini', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 84 },
-  ],
-  tech: [
-    { category: 'Internship', title: 'Software Development Intern — Royal Science & Technology Park', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 91 },
-    { category: 'Scholarship', title: 'Eswatini National Scholarship — ICT Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 79 },
-    { category: 'Event', title: 'Eswatini Tech & Innovation Summit — Mbabane', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 86 },
-  ],
-  finance: [
-    { category: 'Internship', title: 'Finance Intern — Central Bank of Eswatini', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 89 },
-    { category: 'Scholarship', title: 'Eswatini National Scholarship — Business & Finance Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 77 },
-    { category: 'Event', title: 'Young Entrepreneurs & Finance Forum — Manzini', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 83 },
-  ],
-  engineering: [
-    { category: 'Internship', title: 'Engineering Intern — Eswatini Electricity Company', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 90 },
-    { category: 'Scholarship', title: 'Eswatini National Scholarship — Engineering Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 78 },
-    { category: 'Event', title: 'Infrastructure & Engineering Careers Expo — Mbabane', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 84 },
-  ],
-  agriculture: [
-    { category: 'Internship', title: 'Agricultural Extension Intern — Ministry of Agriculture', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 88 },
-    { category: 'Scholarship', title: 'Eswatini National Scholarship — Agriculture Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 76 },
-    { category: 'Event', title: 'Sustainable Agriculture & Food Security Forum — Luyengo', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 82 },
-  ],
-  law: [
-    { category: 'Internship', title: 'Legal Intern — Eswatini High Court', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 89 },
-    { category: 'Scholarship', title: 'Eswatini National Scholarship — Law Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 77 },
-    { category: 'Event', title: 'Law & Governance Careers Dialogue — Mbabane', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 81 },
-  ],
-  education: [
-    { category: 'Internship', title: 'Teaching Practicum Placement — Ministry of Education and Training', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 88 },
-    { category: 'Scholarship', title: 'Eswatini National Scholarship — Education Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 76 },
-    { category: 'Event', title: 'Future Educators Conference — Nhlangano', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 82 },
-  ],
-  general: [
-    { category: 'Internship', title: 'Graduate Internship Programme — Public Service Commission', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 85 },
-    { category: 'Scholarship', title: 'Eswatini National Scholarship — Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 75 },
-    { category: 'Event', title: 'National Student Careers Fair — Mbabane', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 80 },
-  ],
+  Eswatini: {
+    geomatics: [
+      { category: 'Internship', title: 'GIS Intern — Eswatini Water Services Corporation', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 92 },
+      { category: 'Scholarship', title: 'Eswatini National Scholarship — Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 78 },
+      { category: 'Event', title: 'Smart Cities & Geospatial Tech Conference — Mbabane', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 85 },
+    ],
+    health: [
+      { category: 'Internship', title: 'Laboratory Intern — Eswatini Ministry of Health', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 90 },
+      { category: 'Scholarship', title: 'Eswatini National Scholarship — Health Sciences Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 80 },
+      { category: 'Event', title: 'Public Health & Diagnostics Symposium — Manzini', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 84 },
+    ],
+    tech: [
+      { category: 'Internship', title: 'Software Development Intern — Royal Science & Technology Park', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 91 },
+      { category: 'Scholarship', title: 'Eswatini National Scholarship — ICT Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 79 },
+      { category: 'Event', title: 'Eswatini Tech & Innovation Summit — Mbabane', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 86 },
+    ],
+    finance: [
+      { category: 'Internship', title: 'Finance Intern — Central Bank of Eswatini', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 89 },
+      { category: 'Scholarship', title: 'Eswatini National Scholarship — Business & Finance Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 77 },
+      { category: 'Event', title: 'Young Entrepreneurs & Finance Forum — Manzini', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 83 },
+    ],
+    engineering: [
+      { category: 'Internship', title: 'Engineering Intern — Eswatini Electricity Company', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 90 },
+      { category: 'Scholarship', title: 'Eswatini National Scholarship — Engineering Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 78 },
+      { category: 'Event', title: 'Infrastructure & Engineering Careers Expo — Mbabane', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 84 },
+    ],
+    agriculture: [
+      { category: 'Internship', title: 'Agricultural Extension Intern — Ministry of Agriculture', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 88 },
+      { category: 'Scholarship', title: 'Eswatini National Scholarship — Agriculture Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 76 },
+      { category: 'Event', title: 'Sustainable Agriculture & Food Security Forum — Luyengo', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 82 },
+    ],
+    law: [
+      { category: 'Internship', title: 'Legal Intern — Eswatini High Court', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 89 },
+      { category: 'Scholarship', title: 'Eswatini National Scholarship — Law Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 77 },
+      { category: 'Event', title: 'Law & Governance Careers Dialogue — Mbabane', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 81 },
+    ],
+    education: [
+      { category: 'Internship', title: 'Teaching Practicum Placement — Ministry of Education and Training', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 88 },
+      { category: 'Scholarship', title: 'Eswatini National Scholarship — Education Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 76 },
+      { category: 'Event', title: 'Future Educators Conference — Nhlangano', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 82 },
+    ],
+    general: [
+      { category: 'Internship', title: 'Graduate Internship Programme — Public Service Commission', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 85 },
+      { category: 'Scholarship', title: 'Eswatini National Scholarship — Undergraduate Renewal', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 75 },
+      { category: 'Event', title: 'National Student Careers Fair — Mbabane', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 80 },
+    ],
+  },
+  Botswana: {
+    geomatics: [
+      { category: 'Internship', title: 'GIS & Surveying Intern — Department of Surveys and Mapping', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 92 },
+      { category: 'Scholarship', title: 'DTEF Sponsorship — Geomatics & Surveying', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 78 },
+      { category: 'Event', title: 'Smart Cities & Land Administration Forum — Gaborone', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 85 },
+    ],
+    health: [
+      { category: 'Internship', title: 'Laboratory Intern — Ministry of Health, Botswana', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 90 },
+      { category: 'Scholarship', title: 'DTEF Sponsorship — Health Sciences', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 80 },
+      { category: 'Event', title: 'Public Health & Diagnostics Symposium — Gaborone', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 84 },
+    ],
+    tech: [
+      { category: 'Internship', title: 'Software Development Intern — Botswana Innovation Hub', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 91 },
+      { category: 'Scholarship', title: 'DTEF Sponsorship — ICT & Computer Science', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 79 },
+      { category: 'Event', title: 'Botswana Tech & Innovation Summit — Gaborone', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 86 },
+    ],
+    finance: [
+      { category: 'Internship', title: 'Finance Intern — Bank of Botswana', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 89 },
+      { category: 'Scholarship', title: 'DTEF Sponsorship — Business, Accounting & Finance', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 77 },
+      { category: 'Event', title: 'Young Entrepreneurs & Finance Forum — Gaborone', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 83 },
+    ],
+    engineering: [
+      { category: 'Internship', title: 'Engineering Intern — Botswana Power Corporation', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 90 },
+      { category: 'Scholarship', title: 'DTEF Sponsorship — Engineering', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 78 },
+      { category: 'Event', title: 'Infrastructure & Engineering Careers Expo — Gaborone', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 84 },
+    ],
+    agriculture: [
+      { category: 'Internship', title: 'Agricultural Extension Intern — Ministry of Agriculture, Botswana', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 88 },
+      { category: 'Scholarship', title: 'DTEF Sponsorship — Agriculture', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 76 },
+      { category: 'Event', title: 'Sustainable Agriculture & Food Security Forum — Gaborone', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 82 },
+    ],
+    law: [
+      { category: 'Internship', title: 'Legal Intern — Botswana High Court', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 89 },
+      { category: 'Scholarship', title: 'DTEF Sponsorship — Law', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 77 },
+      { category: 'Event', title: 'Law & Governance Careers Dialogue — Gaborone', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 81 },
+    ],
+    education: [
+      { category: 'Internship', title: 'Teaching Practicum Placement — Ministry of Education and Skills Development', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 88 },
+      { category: 'Scholarship', title: 'DTEF Sponsorship — Education', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 76 },
+      { category: 'Event', title: 'Future Educators Conference — Gaborone', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 82 },
+    ],
+    general: [
+      { category: 'Internship', title: 'Graduate Internship Programme — Directorate of Public Service Management', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 85 },
+      { category: 'Scholarship', title: 'DTEF Sponsorship — Undergraduate', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 75 },
+      { category: 'Event', title: 'National Student Careers Fair — Gaborone', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 80 },
+    ],
+  },
 };
 
 export const ALL_INTERESTS = [
@@ -96,23 +145,52 @@ export const REPORT_STRUCTURES = {
 
 export const FOUNDER_SIGNATURE = '— Mlibatisi Dlamini (2026) ©';
 
-export const INSTITUTIONS = [
-  { name: 'University of Eswatini', handbookUrl: 'https://www.uneswa.ac.sz', handbookLabel: 'UNESWA Official Handbook' },
-  { name: 'Limkokwing University (Eswatini)', handbookUrl: 'https://www.limkokwing.net/eswatini/', handbookLabel: 'Limkokwing Eswatini — Official Site' },
-  { name: 'Eswatini Medical Christian University', handbookUrl: 'https://emcu.ac.sz', handbookLabel: 'EMCU Official Site' },
-  { name: 'Southern Africa Nazarene University (SANU)', handbookUrl: 'https://www.sanu.ac.sz', handbookLabel: 'SANU Official Site' },
-  { name: 'William Pitcher College', handbookUrl: 'https://www.wpc.ac.sz', handbookLabel: 'William Pitcher College — Official Site' },
-  { name: 'Eswatini College of Technology (ECOT)', handbookUrl: 'https://www.ecot.ac.sz', handbookLabel: 'ECOT Official Site' },
-  { name: 'Gwamile VOCTIM', handbookUrl: 'https://gwamilevoctim.ac.sz', handbookLabel: 'Gwamile VOCTIM — Official Site' },
-  { name: 'Ngwane Training College', handbookUrl: 'https://ngwanecollege.org', handbookLabel: 'Ngwane Training College — Official Site' },
-  { name: 'Other', handbookUrl: null, handbookLabel: null },
+export const NATIONALITIES = [
+  'Eswatini', 'Botswana', 'South Africa', 'Lesotho', 'Zambia',
+  'Zimbabwe', 'Mozambique', 'Namibia', 'Malawi', 'Kenya',
+  'Nigeria', 'Ghana', 'Tanzania', 'Uganda', 'India', 'China',
 ];
 
-// TODO: replace these three with the real Google Form links once created.
-export const CONTACT_FORM_URL = 'https://forms.google.com/REPLACE_WITH_CONTACT_FORM';
-export const REPORT_PROBLEM_FORM_URL = 'https://forms.google.com/REPLACE_WITH_REPORT_PROBLEM_FORM';
-export const SUGGEST_FEATURE_FORM_URL = 'https://forms.google.com/REPLACE_WITH_SUGGEST_FEATURE_FORM';
-export const RATE_FORM_URL = 'https://forms.google.com/REPLACE_WITH_RATE_FORM';
+export const GENDER_OPTIONS = ['Female', 'Male', 'Non-binary', 'Prefer to self-describe', 'Prefer not to say'];
+
+export const INSTITUTIONS = [
+  // Eswatini
+  { name: 'University of Eswatini', country: 'Eswatini', handbookUrl: 'https://www.uneswa.ac.sz', handbookLabel: 'UNESWA Official Handbook' },
+  { name: 'Limkokwing University (Eswatini)', country: 'Eswatini', handbookUrl: 'https://www.limkokwing.net/eswatini/', handbookLabel: 'Limkokwing Eswatini — Official Site' },
+  { name: 'Eswatini Medical Christian University', country: 'Eswatini', handbookUrl: 'https://emcu.ac.sz', handbookLabel: 'EMCU Official Site' },
+  { name: 'Southern Africa Nazarene University (SANU)', country: 'Eswatini', handbookUrl: 'https://www.sanu.ac.sz', handbookLabel: 'SANU Official Site' },
+  { name: 'William Pitcher College', country: 'Eswatini', handbookUrl: 'https://www.wpc.ac.sz', handbookLabel: 'William Pitcher College — Official Site' },
+  { name: 'Eswatini College of Technology (ECOT)', country: 'Eswatini', handbookUrl: 'https://www.ecot.ac.sz', handbookLabel: 'ECOT Official Site' },
+  { name: 'Gwamile VOCTIM', country: 'Eswatini', handbookUrl: 'https://gwamilevoctim.ac.sz', handbookLabel: 'Gwamile VOCTIM — Official Site' },
+  { name: 'Ngwane Training College', country: 'Eswatini', handbookUrl: 'https://ngwanecollege.org', handbookLabel: 'Ngwane Training College — Official Site' },
+  // Botswana
+  { name: 'University of Botswana', country: 'Botswana', handbookUrl: 'https://www.ub.bw', handbookLabel: 'University of Botswana — Official Site' },
+  { name: 'Ba Isago University', country: 'Botswana', handbookUrl: 'https://www.baisago.ac.bw', handbookLabel: 'Ba Isago University — Official Site' },
+  { name: 'Botho University (Botswana)', country: 'Botswana', handbookUrl: 'https://www.bothouniversity.com/botswana', handbookLabel: 'Botho University Botswana — Official Site' },
+  { name: 'Botswana International University of Science and Technology (BIUST)', country: 'Botswana', handbookUrl: 'https://www.biust.ac.bw', handbookLabel: 'BIUST — Official Site' },
+  { name: 'Limkokwing University (Botswana)', country: 'Botswana', handbookUrl: 'https://www.limkokwing.net/botswana-join', handbookLabel: 'Limkokwing Botswana — Official Site' },
+  { name: 'Botswana Accountancy College (BAC)', country: 'Botswana', handbookUrl: 'https://bac.ac.bw', handbookLabel: 'BAC (Botswana School of Business Sciences) — Official Site' },
+  { name: 'Imperial School of Business and Science (ISBS)', country: 'Botswana', handbookUrl: 'https://www.isbs.ac.bw', handbookLabel: 'ISBS — Official Site' },
+  // Available for any country
+  { name: 'Other', country: null, handbookUrl: null, handbookLabel: null },
+];
+
+export function institutionsForCountry(country) {
+  return INSTITUTIONS.filter((i) => i.country === country || i.country === null);
+}
+
+export const FUNDING_BODIES = {
+  Botswana: {
+    name: 'Department of Tertiary Education Financing (DTEF)',
+    description: 'Handles government sponsorship, loans and grants for Botswana citizens in tertiary education.',
+    url: 'https://tef.gov.bw',
+  },
+};
+
+export const CONTACT_FORM_URL = 'https://forms.gle/Dr4p5GFyu7WEVhAs7';
+export const REPORT_PROBLEM_FORM_URL = 'https://forms.gle/iyStj3KyBkK65TXr9';
+export const SUGGEST_FEATURE_FORM_URL = 'https://forms.gle/nMuAvZddwQ33UHwn6';
+export const RATE_FORM_URL = 'https://forms.gle/RvMQPfAxPcUDQddVA';
 
 export const WHATSAPP_CHANNEL_URL = 'https://whatsapp.com/channel/0029Vb8XUWbADTOBMrhjqz11';
 

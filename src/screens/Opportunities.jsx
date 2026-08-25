@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Pill, OpportunityCard } from '../components/shared';
 import { OPPORTUNITY_SAMPLES, categoryForProgramme } from '../data/constants';
 
-export default function OpportunitiesScreen({ profile }) {
+export default function OpportunitiesScreen({ profile, country }) {
   const [filter, setFilter] = useState('All');
   const filters = ['All', 'Scholarships', 'Internships', 'Events'];
 
@@ -11,7 +11,8 @@ export default function OpportunitiesScreen({ profile }) {
   const interestPhrase = topInterest ? ` and ${topInterest} interest` : '';
 
   const category = categoryForProgramme(profile?.programme) || 'general';
-  const baseSet = OPPORTUNITY_SAMPLES[category];
+  const countrySet = OPPORTUNITY_SAMPLES[country] || OPPORTUNITY_SAMPLES.Eswatini;
+  const baseSet = countrySet[category] || countrySet.general;
 
   const opportunities = [
     { ...baseSet[0], why: `Matches ${programme}${interestPhrase}` },

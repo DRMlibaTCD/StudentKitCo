@@ -11,6 +11,8 @@ const DEFAULT_PROFILE = {
   name: '',
   nickname: '',
   dob: '',
+  nationality: '',
+  gender: '',
   institution: 'University of Eswatini',
   programme: '',
   level: 'First year',
@@ -51,7 +53,7 @@ export default function App() {
         profile={profile}
       />
     ),
-    opportunities: <OpportunitiesScreen profile={profile} />,
+    opportunities: <OpportunitiesScreen profile={profile} country={country} />,
     tools: <ToolsScreen profile={profile} />,
     profile: (
       <ProfileScreen

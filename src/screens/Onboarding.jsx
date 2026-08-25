@@ -1,20 +1,34 @@
 import { useState, useEffect, useRef } from 'react';
 import { Sparkles, CheckCircle2, Lock } from 'lucide-react';
 import { Pill, Flag, Field } from '../components/shared';
-import { ALL_INTERESTS, suggestedInterestsFor, FOUNDER_SIGNATURE, INSTITUTIONS } from '../data/constants';
+import { ALL_INTERESTS, suggestedInterestsFor, FOUNDER_SIGNATURE, institutionsForCountry, NATIONALITIES, GENDER_OPTIONS } from '../data/constants';
 
 export default function Onboarding({ onFinish, country, setCountry, profile, setProfile }) {
   const [step, setStep] = useState(0);
+  const [showOtherNationality, setShowOtherNationality] = useState(
+    Boolean(profile.nationality) && !NATIONALITIES.includes(profile.nationality)
+  );
+  const [showSelfDescribeGender, setShowSelfDescribeGender] = useState(
+    Boolean(profile.gender) && !GENDER_OPTIONS.includes(profile.gender)
+  );
   const totalSteps = 6;
   const countries = [
     { name: 'Eswatini', available: true },
-    { name: 'Botswana', available: false },
+    { name: 'Botswana', available: true },
     { name: 'South Africa', available: false },
     { name: 'Lesotho', available: false },
     { name: 'Zambia', available: false },
   ];
-  const institutions = INSTITUTIONS.map((i) => i.name);
+  const institutions = institutionsForCountry(country).map((i) => i.name);
   const levels = ['First year', 'Second year', 'Third year', 'Final year', 'Postgraduate'];
+
+  // If the selected country changes and the current institution no longer belongs to it, reset to the first valid option.
+  useEffect(() => {
+    if (!institutions.includes(profile.institution) && institutions.length > 0) {
+      setProfile((p) => ({ ...p, institution: institutions[0] }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [country]);
 
   // Auto-add matching interest tags whenever the programme text resolves to new suggestions,
   // without wiping out anything the user already picked manually.
@@ -121,6 +135,53 @@ export default function Onboarding({ onFinish, country, setCountry, profile, set
             <Field label="Preferred name (optional)" input value={profile.nickname} onChange={(v) => setProfile((p) => ({ ...p, nickname: v }))} />
             <p className="text-3xs skc-muted skc-body" style={{ marginTop: -6 }}>Leave blank and we'll just use your first name.</p>
             <Field label="Date of birth" input type="date" value={profile.dob} onChange={(v) => setProfile((p) => ({ ...p, dob: v }))} />
+
+            <label className="block">
+              <span className="text-2xs skc-muted skc-body">Nationality</span>
+              <select
+                className="skc-field mt-1 px-3 py-2 text-sm skc-body"
+                value={showOtherNationality ? 'Other' : profile.nationality}
+                onChange={(e) => {
+                  if (e.target.value === 'Other') {
+                    setShowOtherNationality(true);
+                    setProfile((p) => ({ ...p, nationality: '' }));
+                  } else {
+                    setShowOtherNationality(false);
+                    setProfile((p) => ({ ...p, nationality: e.target.value }));
+                  }
+                }}
+              >
+                <option value="" disabled>Select nationality</option>
+                {NATIONALITIES.map((n) => <option key={n} value={n}>{n}</option>)}
+                <option value="Other">Other</option>
+              </select>
+            </label>
+            {showOtherNationality && (
+              <Field label="Type your nationality" input value={profile.nationality} onChange={(v) => setProfile((p) => ({ ...p, nationality: v }))} />
+            )}
+
+            <label className="block">
+              <span className="text-2xs skc-muted skc-body">Gender</span>
+              <select
+                className="skc-field mt-1 px-3 py-2 text-sm skc-body"
+                value={showSelfDescribeGender ? 'Prefer to self-describe' : profile.gender}
+                onChange={(e) => {
+                  if (e.target.value === 'Prefer to self-describe') {
+                    setShowSelfDescribeGender(true);
+                    setProfile((p) => ({ ...p, gender: '' }));
+                  } else {
+                    setShowSelfDescribeGender(false);
+                    setProfile((p) => ({ ...p, gender: e.target.value }));
+                  }
+                }}
+              >
+                <option value="" disabled>Select gender</option>
+                {GENDER_OPTIONS.map((g) => <option key={g} value={g}>{g}</option>)}
+              </select>
+            </label>
+            {showSelfDescribeGender && (
+              <Field label="Self-describe" input value={profile.gender} onChange={(v) => setProfile((p) => ({ ...p, gender: v }))} />
+            )}
           </div>
         )}
 
