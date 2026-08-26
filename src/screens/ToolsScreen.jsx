@@ -6,7 +6,7 @@ import BudgetCalculator from './tools/BudgetCalculator';
 import CitationGenerator from './tools/CitationGenerator';
 import ReportBuilder from './tools/ReportBuilder';
 
-export default function ToolsScreen({ profile }) {
+export default function ToolsScreen({ profile, country }) {
   const [active, setActive] = useState('grade');
   const tools = [
     { key: 'grade', label: 'Grade' },
@@ -25,7 +25,7 @@ export default function ToolsScreen({ profile }) {
       </div>
       {active === 'grade' && <GradeCalculator />}
       {active === 'gpa' && <GpaCalculator />}
-      {active === 'budget' && <BudgetCalculator />}
+      {active === 'budget' && <BudgetCalculator country={country} />}
       {active === 'citation' && <CitationGenerator />}
       {active === 'report' && <ReportBuilder profile={profile} />}
     </div>

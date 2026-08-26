@@ -1,3 +1,15 @@
+export const CURRENCIES = {
+  Eswatini: { code: 'SZL', symbol: 'E', name: 'Lilangeni' },
+  Botswana: { code: 'BWP', symbol: 'P', name: 'Pula' },
+  'South Africa': { code: 'ZAR', symbol: 'R', name: 'Rand' },
+  Lesotho: { code: 'LSL', symbol: 'M', name: 'Loti' },
+  Zambia: { code: 'ZMW', symbol: 'K', name: 'Kwacha' },
+};
+
+export function currencyForCountry(country) {
+  return CURRENCIES[country] || { code: '', symbol: 'E', name: '' };
+}
+
 export const FLAG_CODES = {
   Eswatini: 'sz',
   Botswana: 'bw',
@@ -7,20 +19,88 @@ export const FLAG_CODES = {
 };
 
 export const PROGRAMME_INTEREST_MAP = [
-  { key: 'geomatics', keywords: ['geomatics', 'survey', 'gis', 'geospatial'], tags: ['GIS', 'Remote Sensing', 'Smart Cities', 'Environmental Management'] },
-  { key: 'tech', keywords: ['computer', 'software', 'information technology', 'programming'], tags: ['Technology', 'AI', 'Software Development', 'Data Science'] },
-  { key: 'finance', keywords: ['finance', 'accounting', 'economics', 'business'], tags: ['Finance', 'Entrepreneurship', 'Economics'] },
-  { key: 'health', keywords: ['medicine', 'health', 'nursing', 'pharmacy', 'medical', 'laboratory', 'lab science', 'radiography'], tags: ['Health', 'Research'] },
-  { key: 'engineering', keywords: ['engineering', 'civil', 'mechanical', 'electrical'], tags: ['Engineering', 'Technology', 'Infrastructure'] },
-  { key: 'agriculture', keywords: ['agriculture', 'agric'], tags: ['Agriculture', 'Environmental Management'] },
-  { key: 'law', keywords: ['law'], tags: ['Law', 'Policy'] },
-  { key: 'education', keywords: ['education', 'teaching'], tags: ['Education', 'Youth Development'] },
+  {
+    key: 'geomatics',
+    keywords: ['geomatics', 'survey', 'surveying', 'gis', 'geospatial', 'geodesy', 'geoinformatics', 'cartography', 'remote sensing', 'land administration'],
+    tags: ['GIS', 'Remote Sensing', 'Smart Cities', 'Environmental Management'],
+  },
+  {
+    key: 'tech',
+    keywords: ['computer', 'computing', 'software', 'information technology', 'informatics', 'programming', 'data science', 'artificial intelligence', 'cyber security', 'cybersecurity', 'ict', 'computer science'],
+    tags: ['Technology', 'AI', 'Software Development', 'Data Science'],
+  },
+  {
+    key: 'engineering',
+    keywords: ['engineering', 'civil engineering', 'mechanical', 'electrical', 'chemical engineering', 'industrial engineering', 'mechatronic', 'mining engineering', 'electronic engineering'],
+    tags: ['Engineering', 'Technology', 'Infrastructure'],
+  },
+  {
+    key: 'health',
+    keywords: ['medicine', 'medical', 'health', 'nursing', 'pharmacy', 'pharmaceutical', 'laboratory', 'lab science', 'biomedical', 'radiography', 'physiotherapy', 'public health', 'dentistry', 'veterinary', 'clinical'],
+    tags: ['Health', 'Research'],
+  },
+  {
+    key: 'finance',
+    keywords: ['finance', 'financial', 'accounting', 'accountancy', 'economics', 'economic', 'business administration', 'business management', 'commerce', 'banking', 'entrepreneurship'],
+    tags: ['Finance', 'Entrepreneurship', 'Economics'],
+  },
+  {
+    key: 'agriculture',
+    keywords: ['agriculture', 'agric', 'agronomy', 'horticulture', 'crop science', 'animal science', 'wildlife', 'natural resources', 'natural resource management', 'range management'],
+    tags: ['Agriculture', 'Environmental Management'],
+  },
+  {
+    key: 'law',
+    keywords: ['law', 'llb', 'legal studies'],
+    tags: ['Law', 'Policy'],
+  },
+  {
+    key: 'education',
+    keywords: ['education', 'teaching', 'pedagogy'],
+    tags: ['Education', 'Youth Development'],
+  },
+  {
+    key: 'architecture',
+    keywords: ['architecture', 'urban planning', 'urban and regional planning', 'built environment', 'quantity survey'],
+    tags: ['Smart Cities', 'Infrastructure', 'Design'],
+  },
+  {
+    key: 'environment',
+    keywords: ['environmental science', 'environmental management', 'ecology', 'climate science'],
+    tags: ['Environmental Management', 'Research'],
+  },
+  {
+    key: 'social',
+    keywords: ['sociology', 'social work', 'psychology', 'political science', 'public administration', 'human resource', 'development studies'],
+    tags: ['Policy', 'Youth Development', 'Research'],
+  },
+  {
+    key: 'media',
+    keywords: ['journalism', 'mass communication', 'media studies', 'communication studies', 'public relations', 'marketing'],
+    tags: ['Technology', 'Entrepreneurship', 'Youth Development'],
+  },
+  {
+    key: 'science',
+    keywords: ['biology', 'chemistry', 'physics', 'mathematics', 'statistics', 'biological science', 'life science'],
+    tags: ['Research', 'Data Science', 'Technology'],
+  },
+  {
+    key: 'hospitality',
+    keywords: ['tourism', 'hospitality', 'hotel management'],
+    tags: ['Entrepreneurship', 'Youth Development'],
+  },
 ];
+
+/** Whole-word/phrase match so short keywords like "law" don't false-positive inside unrelated words. */
+function textContainsKeyword(text, keyword) {
+  const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`\\b${escaped}\\b`, 'i').test(text);
+}
 
 /** Returns the first matching category key for a programme string, or null if nothing matches. */
 export function categoryForProgramme(programme) {
-  const p = (programme || '').toLowerCase();
-  const match = PROGRAMME_INTEREST_MAP.find((row) => row.keywords.some((k) => p.includes(k)));
+  const p = programme || '';
+  const match = PROGRAMME_INTEREST_MAP.find((row) => row.keywords.some((k) => textContainsKeyword(p, k)));
   return match ? match.key : null;
 }
 
@@ -124,12 +204,13 @@ export const OPPORTUNITY_SAMPLES = {
 export const ALL_INTERESTS = [
   'GIS', 'Remote Sensing', 'Smart Cities', 'Environmental Management', 'Technology', 'AI',
   'Software Development', 'Data Science', 'Finance', 'Entrepreneurship', 'Economics', 'Health',
-  'Research', 'Engineering', 'Infrastructure', 'Agriculture', 'Law', 'Policy', 'Education', 'Youth Development',
+  'Research', 'Engineering', 'Infrastructure', 'Agriculture', 'Law', 'Policy', 'Education',
+  'Youth Development', 'Design',
 ];
 
 export function suggestedInterestsFor(programme) {
-  const p = (programme || '').toLowerCase();
-  const matched = PROGRAMME_INTEREST_MAP.filter((row) => row.keywords.some((k) => p.includes(k)));
+  const p = programme || '';
+  const matched = PROGRAMME_INTEREST_MAP.filter((row) => row.keywords.some((k) => textContainsKeyword(p, k)));
   return [...new Set(matched.flatMap((m) => m.tags))];
 }
 
@@ -187,9 +268,9 @@ export const FUNDING_BODIES = {
   },
 };
 
-export const CONTACT_FORM_URL = 'https://forms.gle/Dr4p5GFyu7WEVhAs7';
-export const REPORT_PROBLEM_FORM_URL = 'https://forms.gle/iyStj3KyBkK65TXr9';
-export const SUGGEST_FEATURE_FORM_URL = 'https://forms.gle/nMuAvZddwQ33UHwn6';
+export const CONTACT_FORM_URL = 'https://forms.gle/SZzFrrwHg2XXHi686';
+export const REPORT_PROBLEM_FORM_URL = 'https://forms.gle/5XtfGXM4yNSwsidy7';
+export const SUGGEST_FEATURE_FORM_URL = 'https://forms.gle/SZzFrrwHg2XXHi686';
 export const RATE_FORM_URL = 'https://forms.gle/RvMQPfAxPcUDQddVA';
 
 export const WHATSAPP_CHANNEL_URL = 'https://whatsapp.com/channel/0029Vb8XUWbADTOBMrhjqz11';

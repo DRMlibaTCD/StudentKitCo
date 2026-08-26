@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Sparkles, Bell, BookOpen, FileText, Calendar, Wallet, MessageCircle, ChevronRight } from 'lucide-react';
 import { Flag, StatBox, MatchMeter } from '../components/shared';
-import { FOUNDER_TEASER, FOUNDER_SIGNATURE, WHATSAPP_CHANNEL_URL } from '../data/constants';
+import { FOUNDER_TEASER, FOUNDER_SIGNATURE, WHATSAPP_CHANNEL_URL, currencyForCountry } from '../data/constants';
 
 function greeting() {
   const h = new Date().getHours();
@@ -13,6 +13,7 @@ function greeting() {
 export default function HomeScreen({ country, seenTeaser, onDismissTeaser, profile }) {
   const [showFuture, setShowFuture] = useState(false);
   const displayName = (profile.nickname || '').trim() || (profile.name || '').trim().split(' ')[0] || 'Student';
+  const { symbol } = currencyForCountry(country);
 
   return (
     <div className="relative overflow-hidden" style={{ minHeight: '100%' }}>
@@ -73,7 +74,7 @@ export default function HomeScreen({ country, seenTeaser, onDismissTeaser, profi
           />
           <StatBox icon={FileText} label="APPLICATIONS" value="2" sub="Submitted · 1 awaiting" />
           <StatBox icon={Calendar} label="EVENTS" value="2" sub="This month" />
-          <StatBox icon={Wallet} label="MONEY" value="E1,850" sub="E61 / day suggested" />
+          <StatBox icon={Wallet} label="MONEY" value={`${symbol}1,850`} sub={`${symbol}61 / day suggested`} />
         </div>
 
         <p className="text-3xs skc-muted skc-body text-center -mt-1">Sample stats shown for illustration — live tracking is on the roadmap.</p>
