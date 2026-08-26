@@ -268,10 +268,10 @@ export const FUNDING_BODIES = {
   },
 };
 
-export const CONTACT_FORM_URL = 'https://forms.gle/SZzFrrwHg2XXHi686';
+export const CONTACT_FORM_URL = 'https://forms.gle/EKBdjwtoj8AVXcGFA';
 export const REPORT_PROBLEM_FORM_URL = 'https://forms.gle/5XtfGXM4yNSwsidy7';
-export const SUGGEST_FEATURE_FORM_URL = 'https://forms.gle/SZzFrrwHg2XXHi686';
-export const RATE_FORM_URL = 'https://forms.gle/RvMQPfAxPcUDQddVA';
+export const SUGGEST_FEATURE_FORM_URL = 'https://forms.gle/TiKBcekSLBBEB7QS8';
+export const RATE_FORM_URL = 'https://forms.gle/R9g5AyyghEXdCmrP7';
 
 export const WHATSAPP_CHANNEL_URL = 'https://whatsapp.com/channel/0029Vb8XUWbADTOBMrhjqz11';
 
