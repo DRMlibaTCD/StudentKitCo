@@ -2,10 +2,12 @@ import { useState } from 'react';
 import {
   Moon, Sun, Mail, Share2, RotateCcw, ChevronRight, ExternalLink,
   CheckCircle2, Lock, Bug, Lightbulb, Star, MessageCircle,
+  Library, Database, FileText, LayoutGrid, CalendarDays, Phone,
 } from 'lucide-react';
 import { Flag, Row, FeedbackRow } from '../components/shared';
 import {
   FOUNDER_STORY_PARAGRAPHS, FOUNDER_SIGNATURE, INSTITUTIONS, institutionsForCountry, FUNDING_BODIES,
+  resourcesForInstitution,
   CONTACT_FORM_URL, REPORT_PROBLEM_FORM_URL, SUGGEST_FEATURE_FORM_URL, RATE_FORM_URL,
   WHATSAPP_CHANNEL_URL,
 } from '../data/constants';
@@ -75,8 +77,47 @@ export default function ProfileScreen({ country, theme, setTheme, onReplayOnboar
   const currentInstitution = INSTITUTIONS.find((i) => i.name === profile.institution);
   const handbookUrl = currentInstitution?.handbookUrl;
   const handbookLabel = currentInstitution?.handbookLabel;
+  const resources = resourcesForInstitution(profile.institution);
 
-  const courseCard = (
+  const ResourceRow = ({ icon: Icon, resource }) =>
+    resource ? (
+      <a
+        href={resource.url}
+        target="_blank"
+        rel="noreferrer"
+        className="skc-divider flex items-center justify-between py-2"
+        style={{ textDecoration: 'none' }}
+      >
+        <div className="flex items-center gap-2">
+          <Icon size={14} className="skc-teal" />
+          <span className="text-xs skc-navy skc-body">{resource.label}</span>
+        </div>
+        <ExternalLink size={13} className="skc-muted" />
+      </a>
+    ) : (
+      <div className="skc-divider flex items-center gap-2 py-2">
+        <Icon size={14} className="skc-lock" />
+        <span className="text-2xs skc-muted skc-body italic">Not publicly available — check with your department</span>
+      </div>
+    );
+
+  const courseCard = resources ? (
+    <div className="skc-card p-4" key="course">
+      <p className="text-3xs skc-muted skc-body mb-1 uppercase tracking-wide font-medium">My University</p>
+      <p className="text-2xs skc-muted skc-body mb-2">
+        Direct links to {profile.institution}'s official systems — verified, not guessed.
+      </p>
+      <ResourceRow icon={Library} resource={resources.library} />
+      <ResourceRow icon={Database} resource={resources.eResources} />
+      <ResourceRow icon={FileText} resource={resources.pastPapers} />
+      <ResourceRow icon={LayoutGrid} resource={resources.studentPortal} />
+      <ResourceRow icon={CalendarDays} resource={resources.academicCalendar} />
+      <ResourceRow icon={Phone} resource={resources.contacts} />
+      {resources.accessNote && (
+        <p className="text-2xs skc-muted skc-body italic mt-2">ℹ️ {resources.accessNote}</p>
+      )}
+    </div>
+  ) : (
     <div className="skc-card p-4" key="course">
       <p className="text-3xs skc-muted skc-body mb-1 uppercase tracking-wide font-medium">Course structure</p>
       <p className="text-2xs skc-muted skc-body mb-2">

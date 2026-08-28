@@ -199,6 +199,53 @@ export const OPPORTUNITY_SAMPLES = {
       { category: 'Event', title: 'National Student Careers Fair — Gaborone', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 80 },
     ],
   },
+  'South Africa': {
+    geomatics: [
+      { category: 'Internship', title: 'GIS & Land Surveying Intern — Department of Rural Development and Land Reform', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 92 },
+      { category: 'Scholarship', title: 'NSFAS Funding — Geomatics & Surveying', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 78 },
+      { category: 'Event', title: 'Smart Cities & Geospatial Tech Conference — Cape Town', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 85 },
+    ],
+    health: [
+      { category: 'Internship', title: 'Laboratory Intern — National Health Laboratory Service (NHLS)', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 90 },
+      { category: 'Scholarship', title: 'NSFAS Funding — Health Sciences', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 80 },
+      { category: 'Event', title: 'Public Health & Diagnostics Symposium — Cape Town', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 84 },
+    ],
+    tech: [
+      { category: 'Internship', title: 'Software Development Intern — Cape Innovation and Technology Initiative (CiTi)', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 91 },
+      { category: 'Scholarship', title: 'NSFAS Funding — ICT & Computer Science', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 79 },
+      { category: 'Event', title: 'Cape Town Tech & Innovation Summit', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 86 },
+    ],
+    finance: [
+      { category: 'Internship', title: 'Finance Intern — South African Reserve Bank', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 89 },
+      { category: 'Scholarship', title: 'NSFAS Funding — Business, Accounting & Finance', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 77 },
+      { category: 'Event', title: 'Young Entrepreneurs & Finance Forum — Cape Town', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 83 },
+    ],
+    engineering: [
+      { category: 'Internship', title: 'Engineering Intern — Eskom', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 90 },
+      { category: 'Scholarship', title: 'NSFAS Funding — Engineering', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 78 },
+      { category: 'Event', title: 'Infrastructure & Engineering Careers Expo — Cape Town', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 84 },
+    ],
+    agriculture: [
+      { category: 'Internship', title: 'Agricultural Extension Intern — Department of Agriculture, Land Reform and Rural Development', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 88 },
+      { category: 'Scholarship', title: 'NSFAS Funding — Agriculture', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 76 },
+      { category: 'Event', title: 'Sustainable Agriculture & Food Security Forum — Stellenbosch', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 82 },
+    ],
+    law: [
+      { category: 'Internship', title: 'Legal Intern — Legal Aid South Africa', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 89 },
+      { category: 'Scholarship', title: 'NSFAS Funding — Law', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 77 },
+      { category: 'Event', title: 'Law & Governance Careers Dialogue — Cape Town', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 81 },
+    ],
+    education: [
+      { category: 'Internship', title: 'Teaching Practicum Placement — Western Cape Education Department', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 88 },
+      { category: 'Scholarship', title: 'Funza Lushaka Teacher Bursary (via NSFAS/DHET)', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 76 },
+      { category: 'Event', title: 'Future Educators Conference — Cape Town', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 82 },
+    ],
+    general: [
+      { category: 'Internship', title: 'Graduate Internship Programme — Public Service Commission', trust: 'Official', status: 'Closing Soon', statusType: 'warn', deadline: 'Closes 30 Aug', match: 85 },
+      { category: 'Scholarship', title: 'NSFAS Funding — Undergraduate', trust: 'Verified', status: 'Open Now', statusType: 'success', deadline: 'Closes 15 Sept', match: 75 },
+      { category: 'Event', title: 'National Student Careers Fair — Cape Town', trust: 'Community Submitted', status: 'Upcoming', statusType: 'lock', deadline: '12 Sept', match: 80 },
+    ],
+  },
 };
 
 export const ALL_INTERESTS = [
@@ -252,6 +299,8 @@ export const INSTITUTIONS = [
   { name: 'Limkokwing University (Botswana)', country: 'Botswana', handbookUrl: 'https://www.limkokwing.net/botswana-join', handbookLabel: 'Limkokwing Botswana — Official Site' },
   { name: 'Botswana Accountancy College (BAC)', country: 'Botswana', handbookUrl: 'https://bac.ac.bw', handbookLabel: 'BAC (Botswana School of Business Sciences) — Official Site' },
   { name: 'Imperial School of Business and Science (ISBS)', country: 'Botswana', handbookUrl: 'https://www.isbs.ac.bw', handbookLabel: 'ISBS — Official Site' },
+  // South Africa
+  { name: 'University of Cape Town', country: 'South Africa', handbookUrl: 'https://uct.ac.za', handbookLabel: 'University of Cape Town — Official Site' },
   // Available for any country
   { name: 'Other', country: null, handbookUrl: null, handbookLabel: null },
 ];
@@ -260,11 +309,62 @@ export function institutionsForCountry(country) {
   return INSTITUTIONS.filter((i) => i.country === country || i.country === null);
 }
 
+// Verified, hand-researched per institution. Every URL here has been checked to actually
+// lead to the right official page. Institutions not listed here fall back to the simpler
+// Course Structure link instead of a broken/guessed resource hub.
+export const UNIVERSITY_RESOURCES = {
+  'University of Botswana': {
+    library: { url: 'https://linyanti.ub.bw/', label: 'UB Library Portal' },
+    eResources: { url: 'https://ub-bw.libguides.com/general', label: 'UB Library Databases & Subject Guides' },
+    pastPapers: null,
+    studentPortal: { url: 'https://www.ub.bw/study/how-register', label: 'Student Registration & Portal Access' },
+    academicCalendar: { url: 'https://www.ub.bw/node/1659', label: 'UB Academic Calendar' },
+    contacts: { url: 'https://www.ub.bw/', label: 'UB Website — Contacts & Student Services' },
+    accessNote: "You'll need your UB Student ID and password to log into the Student Administration System and most portals.",
+  },
+  'University of Eswatini': {
+    library: { url: 'https://www.library.uneswa.ac.sz/', label: 'UNESWA Library Portal' },
+    eResources: { url: 'http://www.library.uneswa.ac.sz/databases.html', label: 'UNESWA E-Resources & Databases' },
+    pastPapers: { url: 'https://www.library.uneswa.ac.sz/pastpapers/', label: 'UNESWA Past Exam Papers Archive' },
+    studentPortal: { url: 'https://sis.uneswa.ac.sz/', label: 'UNESWA Student Information System' },
+    academicCalendar: { url: 'https://www.uneswa.ac.sz/publications/', label: 'UNESWA Calendar & Publications' },
+    contacts: { url: 'https://www.uneswa.ac.sz/students/student-services/', label: 'UNESWA Student Services' },
+    accessNote: 'Most systems use your UNESWA student number. Off-campus access to some databases requires OpenAthens registration through the library.',
+  },
+  'Eswatini Medical Christian University': {
+    library: { url: 'https://emcu.ac.sz/about-us/', label: 'EMCU Library Info' },
+    eResources: null,
+    pastPapers: null,
+    studentPortal: { url: 'https://reg.emcu.ac.sz/home2/', label: 'myEMCU Student Portal' },
+    academicCalendar: null,
+    contacts: { url: 'https://emcu.ac.sz/', label: 'EMCU Main Site' },
+    accessNote: 'New students: your User ID and password are both your Student Number. Continuing students use your Registration/Access Number for both.',
+  },
+  'University of Cape Town': {
+    library: { url: 'https://lib.uct.ac.za', label: 'UCT Libraries' },
+    eResources: { url: 'https://libguides.lib.uct.ac.za', label: 'UCT Library Subject Guides & Databases' },
+    pastPapers: { url: 'https://amathuba.uct.ac.za', label: 'Amathuba (past papers are posted inside your individual course sites)' },
+    studentPortal: { url: 'https://studentsonline.uct.ac.za', label: 'PeopleSoft Student Self-Service (registration, fees, results)' },
+    academicCalendar: { url: 'https://uct.ac.za/academic-calendar', label: 'UCT Academic Calendar' },
+    contacts: { url: 'https://uct.ac.za/students/student-systems-support/contact-centre', label: 'UCT Student Systems Support' },
+    accessNote: "UCT retired Vula at the end of 2025. Course content now lives on Amathuba, and registration/fees/results are on PeopleSoft — both use your UCT username and network password.",
+  },
+};
+
+export function resourcesForInstitution(institution) {
+  return UNIVERSITY_RESOURCES[institution] || null;
+}
+
 export const FUNDING_BODIES = {
   Botswana: {
     name: 'Department of Tertiary Education Financing (DTEF)',
     description: 'Handles government sponsorship, loans and grants for Botswana citizens in tertiary education.',
     url: 'https://tef.gov.bw',
+  },
+  'South Africa': {
+    name: 'National Student Financial Aid Scheme (NSFAS)',
+    description: 'South African government bursary and loan scheme funding undergraduate study for eligible students at public universities and TVET colleges.',
+    url: 'https://www.nsfas.org.za',
   },
 };
 

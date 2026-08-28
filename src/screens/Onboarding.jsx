@@ -15,7 +15,7 @@ export default function Onboarding({ onFinish, country, setCountry, profile, set
   const countries = [
     { name: 'Eswatini', available: true },
     { name: 'Botswana', available: true },
-    { name: 'South Africa', available: false },
+    { name: 'South Africa', available: true },
     { name: 'Lesotho', available: false },
     { name: 'Zambia', available: false },
   ];
