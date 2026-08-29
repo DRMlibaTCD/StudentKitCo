@@ -273,6 +273,13 @@ export const REPORT_STRUCTURES = {
 
 export const FOUNDER_SIGNATURE = '— Mlibatisi Dlamini (2026) ©';
 
+export const TAB_OVERVIEW = [
+  { icon: 'Home', tab: 'Home', description: "Your snapshot — today's matches, quick stats, and shortcuts." },
+  { icon: 'Compass', tab: 'Opportunities', description: 'Scholarships, internships & events, filtered to your programme and country.' },
+  { icon: 'Calculator', tab: 'Tools', description: '5 built-in tools: Grade Calculator, GPA Calculator, Budget Planner, Citation Generator, Report Builder.' },
+  { icon: 'User', tab: 'Profile', description: 'Your details, university resources, feedback, and settings.' },
+];
+
 export const NATIONALITIES = [
   'Eswatini', 'Botswana', 'South Africa', 'Lesotho', 'Zambia',
   'Zimbabwe', 'Mozambique', 'Namibia', 'Malawi', 'Kenya',

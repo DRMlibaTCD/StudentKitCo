@@ -26,6 +26,7 @@ export default function App() {
   const [theme, setTheme] = usePersistentState('theme', 'light');
   const [country, setCountry] = usePersistentState('country', 'Eswatini');
   const [seenTeaser, setSeenTeaser] = usePersistentState('seen-teaser', false);
+  const [seenTabOverview, setSeenTabOverview] = usePersistentState('seen-tab-overview', false);
   const [profile, setProfile] = usePersistentState('profile', DEFAULT_PROFILE);
 
   useEffect(() => {
@@ -50,6 +51,8 @@ export default function App() {
         country={country}
         seenTeaser={seenTeaser}
         onDismissTeaser={() => setSeenTeaser(true)}
+        seenTabOverview={seenTabOverview}
+        onDismissTabOverview={() => setSeenTabOverview(true)}
         profile={profile}
       />
     ),

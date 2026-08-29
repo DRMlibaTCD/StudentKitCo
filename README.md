@@ -53,6 +53,8 @@ Each is marked `REPLACE_WITH_...` so they're easy to find — just search the fi
 
 ## What's real vs. what's a placeholder
 
+- **Automatic updates, no manual cache-clearing needed** — the app checks for a new deployed version every 30 seconds while it's open, and silently activates it (no prompt, no user action). Previously, an already-installed instance could sit on an old version until the next full close/reopen; this closes that gap so testers never need to clear cache or reinstall after you push an update.
+
 - **Citation lookups (DOI via Crossref, ISBN via Open Library)** are live network calls — no mock data, no demo label. They need an internet connection to resolve; if a lookup fails, the tool shows an inline error message rather than silently falling back to fake data.
 - **Per-device storage** (profile, theme, country, teaser dismissal, citation reference list, onboarding completion) uses real `localStorage`, wrapped in a small `usePersistentState` hook (`src/hooks/usePersistentState.js`) with try/catch so the app still works if storage is unavailable (e.g. private browsing).
 - **Flags** for the 5 supported countries are bundled locally in `public/flags/` (sourced from the MIT-licensed `flag-icons` project) — no CDN fetch, so they render correctly offline.

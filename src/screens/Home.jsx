@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { Sparkles, Bell, BookOpen, FileText, Calendar, Wallet, MessageCircle, ChevronRight } from 'lucide-react';
+import { Sparkles, Bell, BookOpen, FileText, Calendar, Wallet, MessageCircle, ChevronRight, Home as HomeIcon, Compass, Calculator, User, LayoutGrid } from 'lucide-react';
 import { Flag, StatBox, MatchMeter } from '../components/shared';
-import { FOUNDER_TEASER, FOUNDER_SIGNATURE, WHATSAPP_CHANNEL_URL, currencyForCountry } from '../data/constants';
+import { FOUNDER_TEASER, FOUNDER_SIGNATURE, WHATSAPP_CHANNEL_URL, currencyForCountry, TAB_OVERVIEW } from '../data/constants';
+
+const TAB_ICONS = { Home: HomeIcon, Compass, Calculator, User };
 
 function greeting() {
   const h = new Date().getHours();
@@ -10,7 +12,7 @@ function greeting() {
   return 'Good evening';
 }
 
-export default function HomeScreen({ country, seenTeaser, onDismissTeaser, profile }) {
+export default function HomeScreen({ country, seenTeaser, onDismissTeaser, seenTabOverview, onDismissTabOverview, profile }) {
   const [showFuture, setShowFuture] = useState(false);
   const displayName = (profile.nickname || '').trim() || (profile.name || '').trim().split(' ')[0] || 'Student';
   const { symbol } = currencyForCountry(country);
@@ -35,6 +37,34 @@ export default function HomeScreen({ country, seenTeaser, onDismissTeaser, profi
             <p className="text-2xs italic skc-muted skc-body mb-1">"Built by a student, for students."</p>
             <p className="text-2xs skc-teal skc-display font-semibold mb-3">{FOUNDER_SIGNATURE}</p>
             <button onClick={onDismissTeaser} className="w-full py-2 rounded-lg skc-bg-teal skc-on-accent text-xs font-semibold skc-body">
+              Got it
+            </button>
+          </div>
+        )}
+
+        {seenTeaser && !seenTabOverview && (
+          <div className="skc-card p-4">
+            <div className="flex items-center gap-1.5 mb-2">
+              <LayoutGrid size={13} className="skc-teal" />
+              <p className="text-3xs skc-teal skc-body font-semibold uppercase tracking-wide">A quick tour</p>
+            </div>
+            <div className="space-y-2.5 mb-3">
+              {TAB_OVERVIEW.map((item) => {
+                const Icon = TAB_ICONS[item.icon];
+                return (
+                  <div key={item.tab} className="flex items-start gap-2.5">
+                    <div className="w-7 h-7 rounded-lg flex items-center justify-center skc-bg-tealtint flex-shrink-0 mt-0.5">
+                      <Icon size={14} className="skc-teal" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold skc-navy skc-body">{item.tab}</p>
+                      <p className="text-2xs skc-muted skc-body leading-snug">{item.description}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <button onClick={onDismissTabOverview} className="w-full py-2 rounded-lg skc-bg-teal skc-on-accent text-xs font-semibold skc-body">
               Got it
             </button>
           </div>
